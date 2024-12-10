@@ -1,25 +1,22 @@
+import './App.css'
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AuthorIntro from './pages/AuthorIntro';
+import MangaChapter from './pages/MangaChapter';
+import CharacterIntro from './pages/CharacterIntro';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+      <Route path="/" element={<Navigate to="/manga-chapter" />} />
+        <Route path="/manga-chapter" element={<MangaChapter />} />
+        <Route path="/character-intro" element={<CharacterIntro />} />
+        <Route path="/author-intro" element={<AuthorIntro />} />
+      </Routes>
+    </Router>
   );
 }
 
